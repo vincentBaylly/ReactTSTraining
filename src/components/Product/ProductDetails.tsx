@@ -1,28 +1,24 @@
-interface ProductDetails {
-  img: string;
-  name: string;
-  description: string;
-}
+import { IProductItem } from "../../models/ProductItem";
 
 interface Props {
-  productDetail: ProductDetails;
+  productItem: IProductItem;
 }
 
 function ProductDetails(props: Props) {
-  const productDetail = props.productDetail;
+  const productItem = props.productItem;
   return (
     <div>
       <div>
         <img
-          src={productDetail.img}
+          src={productItem.img}
           width="25%"
           height="25%"
           alt="language icon"
         />
-        <h3>{productDetail.name}</h3>
+        <h3>{productItem.itemName}</h3>
       </div>
       <br />
-      <div>{productDetail.description}</div>
+      <div>{productItem.description}</div>
       <br />
       <br />
     </div>

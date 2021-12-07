@@ -1,4 +1,5 @@
 import { useState, useReducer, useCallback } from "react";
+import { IProductItem } from "../../models/ProductItem";
 
 type ACTIONTYPE =
   | { type: "increment"; payload: number }
@@ -15,19 +16,8 @@ function reducer(quantity: number, action: ACTIONTYPE) {
   }
 }
 
-interface ProductItem {
-  id: number;
-  img: string;
-  itemName: string;
-  description: string;
-  price: number;
-  isFavorite: boolean;
-  quantity?: number;
-  showProductDescription?: Function;
-}
-
 interface Props {
-  productItem: ProductItem;
+  productItem: IProductItem;
 }
 
 function ProductItem(props: Props) {
@@ -44,7 +34,9 @@ function ProductItem(props: Props) {
     //props.showProductDescription(productItem.id);
     useCallback(
       (event) => {
-        productItem.showProductDescription(productItem.id - 1);
+        if (productItem.showProductDescription) {
+          productItem.showProductDescription(productItem.id - 1);
+        }
       },
       [productItem.id, props]
     );
