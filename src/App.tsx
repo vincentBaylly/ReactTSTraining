@@ -1,5 +1,5 @@
 import "./App.css";
-import Home from "./components/Home";
+import Home from "./views/Home";
 import Title from "./components/Section/Title";
 
 function App() {
